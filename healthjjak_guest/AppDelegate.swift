@@ -16,6 +16,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 		// Override point for customization after application launch.
+		
+		//쿠키가져오기
+		let cookiesData = NSUserDefaults.standardUserDefaults().objectForKey("cookies")
+		if cookiesData != nil {
+			let cookies: NSArray = NSKeyedUnarchiver.unarchiveObjectWithData(cookiesData as! NSData) as! NSArray
+			
+			print(cookies)
+			for cookie in cookies {
+				NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(cookie as! NSHTTPCookie)
+			}
+		}
+		
 		return true
 	}
 
@@ -39,6 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func applicationWillTerminate(application: UIApplication) {
 		// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+		
+		//쿠키저장하기
+		let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookies
+		print(cookies)
+		let cookieData = NSKeyedArchiver.archivedDataWithRootObject(cookies!)
+		
+		NSUserDefaults.standardUserDefaults().setObject(cookieData, forKey: "cookies")
 	}
 
 
