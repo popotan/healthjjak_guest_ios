@@ -22,28 +22,40 @@ class HomeWebViewViewController: UIViewController, UIWebViewDelegate{
 		//print(NSUserDefaults.standardUserDefaults())
 		print(NSUserDefaults.standardUserDefaults().valueForKey("wasPerformed"))
 		
-		if NSUserDefaults.standardUserDefaults().valueForKey("wasPerformed") == nil {
+		if NSUserDefaults.standardUserDefaults().valueForKey("wasPerformed") == nil || NSUserDefaults.standardUserDefaults().valueForKey("LOGGED") == nil {
 			let userDefaults = NSUserDefaults.standardUserDefaults()
 			userDefaults.setBool(true, forKey: "wasPerformed")
 			
 			let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("LoginOrJoin")
 			
 			presentViewController(nextView!, animated: false, completion: nil)
+		}else{
+			NSURLCache.sharedURLCache().removeAllCachedResponses()
+//			NSURLCache.sharedURLCache().diskCapacity = 0
+//			NSURLCache.sharedURLCache().memoryCapacity = 0
+			loadWebViewInit()
 		}
-		
-		loadWebViewInit()
+
+		homeWebView.scrollView.bounces = false
     }
+	
+	override func viewDidDisappear(animated: Bool) {
+		self.navigationController?.hidesBarsOnSwipe = false
+		self.navigationController?.setNavigationBarHidden(false, animated: true)
+	}
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 	
+	
+	
 	func loadWebViewInit(){
 		let homeURL = NSURL(string:"http://211.253.24.190/webview/")
 		homeWebView.loadRequest(NSURLRequest(URL: homeURL!))
 	}
-
+	
 	@IBAction func edgeSwipeAction(sender: AnyObject) {
 		homeWebView.goBack()
 	}

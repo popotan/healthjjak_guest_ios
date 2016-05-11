@@ -10,11 +10,13 @@ import UIKit
 
 class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-	var session:Bool = false
-	let menuTitlesOnSessionTrue = ["로그아웃","즐겨찾기목록","푸시알림내역","결제내역"]
-	let menuTitlesOnSessionFalse = ["로그인"]
-	let menuTitlesOnBasic = ["공지사항","파트너문의"]
+	let userSession = UserSession.sharedInstance
 	
+	let menuTitlesOnSessionTrue = ["로그아웃","즐겨찾기목록","결제내역"]
+	let menuTitlesOnSessionFalse = ["로그인","가입하기"]
+	let menuTitlesOnBasic = ["공지사항","파트너문의"]
+	@IBOutlet weak var userNameLabel: UILabel!
+	@IBOutlet weak var userEmailLabel: UILabel!
 	@IBOutlet weak var menuTable: UITableView!
 	
     override func viewDidLoad() {
@@ -25,11 +27,9 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	override func viewDidAppear(animated: Bool) {
 		//세션체크
-		UserSession.sharedInstance.getValidInfo()
-		if UserSession.sharedInstance.valid {
-			self.session = true
-		}else{
-			self.session = false
+		if userSession.valid {
+			userNameLabel.text = userSession.info["name"] as? String
+			userEmailLabel.text = userSession.info["email"] as? String
 		}
 		menuTable.reloadData()
 	}
@@ -44,7 +44,7 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		if self.session {
+		if userSession.valid {
 			return menuTitlesOnSessionTrue.count + menuTitlesOnBasic.count
 		}else{
 			return menuTitlesOnBasic.count + menuTitlesOnSessionFalse.count
@@ -54,7 +54,7 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("MenuCell", forIndexPath: indexPath)
 		
-		if self.session {
+		if userSession.valid {
 			if indexPath.row < self.menuTitlesOnSessionTrue.count {
 				cell.textLabel?.text = self.menuTitlesOnSessionTrue[indexPath.row]
 			}else{
@@ -72,14 +72,19 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
 	
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let selectedCell = tableView.cellForRowAtIndexPath(indexPath)
-		print(selectedCell?.textLabel?.text)
 		
 		switch (selectedCell?.textLabel?.text)! {
 		case "로그인":
-			let JoinView = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")
-			presentViewController(JoinView!, animated: true, completion: nil)
+			let loginView = self.storyboard?.instantiateViewControllerWithIdentifier("LoginView")
+			presentViewController(loginView!, animated: true, completion: nil)
 			break
 			case "공지사항":
+				let baseURL = NSURL(string: "http://blog.naver.com/PostList.nhn?blogId=healthjjak&from=postList&categoryNo=8")
+				UIApplication.sharedApplication().openURL(baseURL!)
+			break
+			case "파트너문의":
+				let baseURL = NSURL(string: "https://healthjjak.com/html/index.php/join/befriends")
+				UIApplication.sharedApplication().openURL(baseURL!)
 			break
 			case "로그아웃":
 				self.performSegueWithIdentifier("LogoutView", sender: nil)
@@ -87,8 +92,10 @@ class MyInfoViewController: UIViewController, UITableViewDelegate, UITableViewDa
 			case "즐겨찾기목록":
 				self.performSegueWithIdentifier("FavoriteList", sender: nil)
 			break
-			case "푸시알림내역":
-				self.performSegueWithIdentifier("PushMessageList", sender: nil)
+			case "가입하기":
+				let JoinView = self.storyboard?.instantiateViewControllerWithIdentifier("LoginOrJoin") as! LoginOrJoinViewController
+				JoinView.cancelAble = true
+				presentViewController(JoinView, animated: true, completion: nil)
 			break
 		default:
 			break

@@ -11,6 +11,38 @@
 		820DA4891CC21E910019314B /* InfoWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 820DA4881CC21E910019314B /* InfoWebViewViewController.swift */; };
 		821197AF1CC0290B00C9BC48 /* HomeWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821197AE1CC0290B00C9BC48 /* HomeWebViewViewController.swift */; };
 		821197B11CC0893000C9BC48 /* MyScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821197B01CC0893000C9BC48 /* MyScheduleViewController.swift */; };
+		82166EE31CD51EC600029CF3 /* MyScheduleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82166EE21CD51EC600029CF3 /* MyScheduleListViewController.swift */; };
+		82166EE51CDB084700029CF3 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82166EE41CDB084700029CF3 /* PayViewController.swift */; };
+		8228C4E51CCEFF5200787A9D /* extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8228C4E41CCEFF5200787A9D /* extensions.swift */; };
+		8228C4EF1CCF092A00787A9D /* home-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4E61CCF092A00787A9D /* home-icon@3x.png */; };
+		8228C4F01CCF092A00787A9D /* home-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4E71CCF092A00787A9D /* home-icon@1x.png */; };
+		8228C4F11CCF092A00787A9D /* myInfo-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4E81CCF092A00787A9D /* myInfo-icon@2x.png */; };
+		8228C4F21CCF092A00787A9D /* myinfo-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4E91CCF092A00787A9D /* myinfo-icon@3x.png */; };
+		8228C4F31CCF092A00787A9D /* mySchedule-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4EA1CCF092A00787A9D /* mySchedule-icon@1x.png */; };
+		8228C4F41CCF092A00787A9D /* mySchedule-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4EB1CCF092A00787A9D /* mySchedule-icon@2x.png */; };
+		8228C4F51CCF092A00787A9D /* myInfo-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4EC1CCF092A00787A9D /* myInfo-icon@1x.png */; };
+		8228C4F61CCF092A00787A9D /* home-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4ED1CCF092A00787A9D /* home-icon@2x.png */; };
+		8228C4F71CCF092A00787A9D /* mySchedule-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4EE1CCF092A00787A9D /* mySchedule-icon@3x.png */; };
+		8228C4FF1CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4F81CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png */; };
+		8228C5001CCF0C0C00787A9D /* myInfo-icon-selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4F91CCF0C0C00787A9D /* myInfo-icon-selected@1x.png */; };
+		8228C5011CCF0C0C00787A9D /* home-icon-selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4FA1CCF0C0C00787A9D /* home-icon-selected@1x.png */; };
+		8228C5021CCF0C0C00787A9D /* myInfo-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4FB1CCF0C0C00787A9D /* myInfo-icon-selected@2x.png */; };
+		8228C5031CCF0C0C00787A9D /* home-icon-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4FC1CCF0C0C00787A9D /* home-icon-selected@3x.png */; };
+		8228C5041CCF0C0C00787A9D /* mySchedule-icon-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4FD1CCF0C0C00787A9D /* mySchedule-icon-selected@3x.png */; };
+		8228C5051CCF0C0C00787A9D /* home-icon-selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C4FE1CCF0C0C00787A9D /* home-icon-selected@2x.png */; };
+		8228C5081CCF0CE100787A9D /* myinfo-icon-selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C5061CCF0CE100787A9D /* myinfo-icon-selected@3x.png */; };
+		8228C5091CCF0CE100787A9D /* mySchedule-icon-selected@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C5071CCF0CE100787A9D /* mySchedule-icon-selected@1x.png */; };
+		8228C50B1CCF78CF00787A9D /* crying.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C50A1CCF78CF00787A9D /* crying.png */; };
+		8228C50D1CCF795200787A9D /* login.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C50C1CCF795200787A9D /* login.png */; };
+		8228C50F1CD0FE6400787A9D /* appicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C50E1CD0FE6400787A9D /* appicon.png */; };
+		8228C5161CD18E2000787A9D /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C5141CD18E2000787A9D /* Default.png */; };
+		8228C5171CD18E2000787A9D /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C5151CD18E2000787A9D /* Default@2x.png */; };
+		8228C5191CD220E600787A9D /* empty-calendar.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C5181CD220E600787A9D /* empty-calendar.png */; };
+		8228C51B1CD221E300787A9D /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 8228C51A1CD221E300787A9D /* person.png */; };
+		822B83121CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83111CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift */; };
+		822B83161CE0006300F737D9 /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 822B83151CE0006300F737D9 /* arrow-down.png */; };
+		822B83181CE14B3E00F737D9 /* INIPayWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */; };
+		822B831A1CE16EED00F737D9 /* PayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83191CE16EED00F737D9 /* PayResultViewController.swift */; };
 		82370A3A1CBF7311003C745A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82370A391CBF7311003C745A /* AppDelegate.swift */; };
 		82370A3C1CBF7311003C745A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82370A3B1CBF7311003C745A /* ViewController.swift */; };
 		82370A411CBF7311003C745A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82370A401CBF7311003C745A /* Assets.xcassets */; };
@@ -27,15 +59,6 @@
 		82448ED11CC4755B00946836 /* postRequestManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448ED01CC4755B00946836 /* postRequestManage.swift */; };
 		82448F2C1CC4F5D900946836 /* LogoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F2B1CC4F5D900946836 /* LogoutViewController.swift */; };
 		82448F301CCCD2FD00946836 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */; };
-		82448F771CCCD9C800946836 /* myInfo-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F741CCCD9C800946836 /* myInfo-icon@1x.png */; };
-		82448F781CCCD9C800946836 /* myInfo-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F751CCCD9C800946836 /* myInfo-icon@2x.png */; };
-		82448F791CCCD9C800946836 /* myinfo-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F761CCCD9C800946836 /* myinfo-icon@3x.png */; };
-		82448F7D1CCCDD7900946836 /* mySchedule-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F7A1CCCDD7900946836 /* mySchedule-icon@1x.png */; };
-		82448F7E1CCCDD7900946836 /* mySchedule-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F7B1CCCDD7900946836 /* mySchedule-icon@3x.png */; };
-		82448F7F1CCCDD7900946836 /* mySchedule-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F7C1CCCDD7900946836 /* mySchedule-icon@2x.png */; };
-		82448F831CCCE0CA00946836 /* home-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F801CCCE0CA00946836 /* home-icon@2x.png */; };
-		82448F841CCCE0CA00946836 /* home-icon@1x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F811CCCE0CA00946836 /* home-icon@1x.png */; };
-		82448F851CCCE0CA00946836 /* home-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82448F821CCCE0CA00946836 /* home-icon@3x.png */; };
 		82448F871CCD82AB00946836 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F861CCD82AB00946836 /* FavoriteListViewController.swift */; };
 		82448F891CCDAF1B00946836 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F881CCDAF1B00946836 /* UIImage+Gif.swift */; };
 /* End PBXBuildFile section */
@@ -62,6 +85,38 @@
 		820DA4881CC21E910019314B /* InfoWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoWebViewViewController.swift; sourceTree = "<group>"; };
 		821197AE1CC0290B00C9BC48 /* HomeWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeWebViewViewController.swift; sourceTree = "<group>"; };
 		821197B01CC0893000C9BC48 /* MyScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScheduleViewController.swift; sourceTree = "<group>"; };
+		82166EE21CD51EC600029CF3 /* MyScheduleListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyScheduleListViewController.swift; sourceTree = "<group>"; };
+		82166EE41CDB084700029CF3 /* PayViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
+		8228C4E41CCEFF5200787A9D /* extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = extensions.swift; sourceTree = "<group>"; };
+		8228C4E61CCF092A00787A9D /* home-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@3x.png"; sourceTree = "<group>"; };
+		8228C4E71CCF092A00787A9D /* home-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@1x.png"; sourceTree = "<group>"; };
+		8228C4E81CCF092A00787A9D /* myInfo-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon@2x.png"; sourceTree = "<group>"; };
+		8228C4E91CCF092A00787A9D /* myinfo-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myinfo-icon@3x.png"; sourceTree = "<group>"; };
+		8228C4EA1CCF092A00787A9D /* mySchedule-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@1x.png"; sourceTree = "<group>"; };
+		8228C4EB1CCF092A00787A9D /* mySchedule-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@2x.png"; sourceTree = "<group>"; };
+		8228C4EC1CCF092A00787A9D /* myInfo-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon@1x.png"; sourceTree = "<group>"; };
+		8228C4ED1CCF092A00787A9D /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@2x.png"; sourceTree = "<group>"; };
+		8228C4EE1CCF092A00787A9D /* mySchedule-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@3x.png"; sourceTree = "<group>"; };
+		8228C4F81CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon-selected@2x.png"; sourceTree = "<group>"; };
+		8228C4F91CCF0C0C00787A9D /* myInfo-icon-selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon-selected@1x.png"; sourceTree = "<group>"; };
+		8228C4FA1CCF0C0C00787A9D /* home-icon-selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon-selected@1x.png"; sourceTree = "<group>"; };
+		8228C4FB1CCF0C0C00787A9D /* myInfo-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon-selected@2x.png"; sourceTree = "<group>"; };
+		8228C4FC1CCF0C0C00787A9D /* home-icon-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon-selected@3x.png"; sourceTree = "<group>"; };
+		8228C4FD1CCF0C0C00787A9D /* mySchedule-icon-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon-selected@3x.png"; sourceTree = "<group>"; };
+		8228C4FE1CCF0C0C00787A9D /* home-icon-selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon-selected@2x.png"; sourceTree = "<group>"; };
+		8228C5061CCF0CE100787A9D /* myinfo-icon-selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myinfo-icon-selected@3x.png"; sourceTree = "<group>"; };
+		8228C5071CCF0CE100787A9D /* mySchedule-icon-selected@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon-selected@1x.png"; sourceTree = "<group>"; };
+		8228C50A1CCF78CF00787A9D /* crying.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = crying.png; sourceTree = "<group>"; };
+		8228C50C1CCF795200787A9D /* login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login.png; sourceTree = "<group>"; };
+		8228C50E1CD0FE6400787A9D /* appicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = appicon.png; sourceTree = "<group>"; };
+		8228C5141CD18E2000787A9D /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		8228C5151CD18E2000787A9D /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		8228C5181CD220E600787A9D /* empty-calendar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "empty-calendar.png"; sourceTree = "<group>"; };
+		8228C51A1CD221E300787A9D /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		822B83111CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthConditionCheckWebViewViewController.swift; sourceTree = "<group>"; };
+		822B83151CE0006300F737D9 /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
+		822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = INIPayWebViewViewController.swift; path = ../INIPayWebViewViewController.swift; sourceTree = "<group>"; };
+		822B83191CE16EED00F737D9 /* PayResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayResultViewController.swift; sourceTree = "<group>"; };
 		82370A361CBF7311003C745A /* healthjjak_guest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = healthjjak_guest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82370A391CBF7311003C745A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82370A3B1CBF7311003C745A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -84,15 +139,6 @@
 		82448ED01CC4755B00946836 /* postRequestManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = postRequestManage.swift; sourceTree = "<group>"; };
 		82448F2B1CC4F5D900946836 /* LogoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoutViewController.swift; sourceTree = "<group>"; };
 		82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
-		82448F741CCCD9C800946836 /* myInfo-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon@1x.png"; sourceTree = "<group>"; };
-		82448F751CCCD9C800946836 /* myInfo-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myInfo-icon@2x.png"; sourceTree = "<group>"; };
-		82448F761CCCD9C800946836 /* myinfo-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "myinfo-icon@3x.png"; sourceTree = "<group>"; };
-		82448F7A1CCCDD7900946836 /* mySchedule-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@1x.png"; sourceTree = "<group>"; };
-		82448F7B1CCCDD7900946836 /* mySchedule-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@3x.png"; sourceTree = "<group>"; };
-		82448F7C1CCCDD7900946836 /* mySchedule-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "mySchedule-icon@2x.png"; sourceTree = "<group>"; };
-		82448F801CCCE0CA00946836 /* home-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@2x.png"; sourceTree = "<group>"; };
-		82448F811CCCE0CA00946836 /* home-icon@1x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@1x.png"; sourceTree = "<group>"; };
-		82448F821CCCE0CA00946836 /* home-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home-icon@3x.png"; sourceTree = "<group>"; };
 		82448F861CCD82AB00946836 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		82448F881CCDAF1B00946836 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -147,10 +193,15 @@
 			children = (
 				82448F6D1CCCD89E00946836 /* resources */,
 				82448EC81CC25E0B00946836 /* Main.storyboard */,
+				822B83191CE16EED00F737D9 /* PayResultViewController.swift */,
+				822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */,
+				82166EE41CDB084700029CF3 /* PayViewController.swift */,
+				822B83111CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift */,
 				82448F881CCDAF1B00946836 /* UIImage+Gif.swift */,
 				82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */,
 				82448ECE1CC3DC3C00946836 /* ReserveViewController.swift */,
 				82448ECC1CC36E9800946836 /* LoginViewController.swift */,
+				8228C4E41CCEFF5200787A9D /* extensions.swift */,
 				82448ECA1CC26E7B00946836 /* JoinNavigationController.swift */,
 				82370A391CBF7311003C745A /* AppDelegate.swift */,
 				82370A3B1CBF7311003C745A /* ViewController.swift */,
@@ -158,6 +209,7 @@
 				82448EC61CC25C9D00946836 /* MyInfoViewController.swift */,
 				821197B01CC0893000C9BC48 /* MyScheduleViewController.swift */,
 				82448F861CCD82AB00946836 /* FavoriteListViewController.swift */,
+				82166EE21CD51EC600029CF3 /* MyScheduleListViewController.swift */,
 				821197AE1CC0290B00C9BC48 /* HomeWebViewViewController.swift */,
 				820DA4881CC21E910019314B /* InfoWebViewViewController.swift */,
 				82448EBC1CC2398A00946836 /* memberInfoManage.swift */,
@@ -192,15 +244,32 @@
 		82448F6D1CCCD89E00946836 /* resources */ = {
 			isa = PBXGroup;
 			children = (
-				82448F801CCCE0CA00946836 /* home-icon@2x.png */,
-				82448F811CCCE0CA00946836 /* home-icon@1x.png */,
-				82448F821CCCE0CA00946836 /* home-icon@3x.png */,
-				82448F7A1CCCDD7900946836 /* mySchedule-icon@1x.png */,
-				82448F7B1CCCDD7900946836 /* mySchedule-icon@3x.png */,
-				82448F7C1CCCDD7900946836 /* mySchedule-icon@2x.png */,
-				82448F741CCCD9C800946836 /* myInfo-icon@1x.png */,
-				82448F751CCCD9C800946836 /* myInfo-icon@2x.png */,
-				82448F761CCCD9C800946836 /* myinfo-icon@3x.png */,
+				8228C4E61CCF092A00787A9D /* home-icon@3x.png */,
+				8228C4E71CCF092A00787A9D /* home-icon@1x.png */,
+				8228C4E81CCF092A00787A9D /* myInfo-icon@2x.png */,
+				8228C4E91CCF092A00787A9D /* myinfo-icon@3x.png */,
+				8228C4EA1CCF092A00787A9D /* mySchedule-icon@1x.png */,
+				8228C4EB1CCF092A00787A9D /* mySchedule-icon@2x.png */,
+				8228C4EC1CCF092A00787A9D /* myInfo-icon@1x.png */,
+				8228C4ED1CCF092A00787A9D /* home-icon@2x.png */,
+				8228C4EE1CCF092A00787A9D /* mySchedule-icon@3x.png */,
+				8228C4F81CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png */,
+				8228C4F91CCF0C0C00787A9D /* myInfo-icon-selected@1x.png */,
+				8228C4FA1CCF0C0C00787A9D /* home-icon-selected@1x.png */,
+				8228C4FB1CCF0C0C00787A9D /* myInfo-icon-selected@2x.png */,
+				8228C4FC1CCF0C0C00787A9D /* home-icon-selected@3x.png */,
+				8228C4FD1CCF0C0C00787A9D /* mySchedule-icon-selected@3x.png */,
+				8228C4FE1CCF0C0C00787A9D /* home-icon-selected@2x.png */,
+				8228C5061CCF0CE100787A9D /* myinfo-icon-selected@3x.png */,
+				8228C5071CCF0CE100787A9D /* mySchedule-icon-selected@1x.png */,
+				8228C5181CD220E600787A9D /* empty-calendar.png */,
+				8228C50C1CCF795200787A9D /* login.png */,
+				8228C50A1CCF78CF00787A9D /* crying.png */,
+				8228C50E1CD0FE6400787A9D /* appicon.png */,
+				8228C5141CD18E2000787A9D /* Default.png */,
+				8228C5151CD18E2000787A9D /* Default@2x.png */,
+				8228C51A1CD221E300787A9D /* person.png */,
+				822B83151CE0006300F737D9 /* arrow-down.png */,
 			);
 			name = resources;
 			sourceTree = "<group>";
@@ -310,18 +379,35 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82448F7D1CCCDD7900946836 /* mySchedule-icon@1x.png in Resources */,
-				82448F851CCCE0CA00946836 /* home-icon@3x.png in Resources */,
+				8228C5041CCF0C0C00787A9D /* mySchedule-icon-selected@3x.png in Resources */,
 				82448EC91CC25E0C00946836 /* Main.storyboard in Resources */,
+				8228C5191CD220E600787A9D /* empty-calendar.png in Resources */,
+				8228C4F11CCF092A00787A9D /* myInfo-icon@2x.png in Resources */,
+				8228C5081CCF0CE100787A9D /* myinfo-icon-selected@3x.png in Resources */,
+				822B83161CE0006300F737D9 /* arrow-down.png in Resources */,
+				8228C5171CD18E2000787A9D /* Default@2x.png in Resources */,
+				8228C4EF1CCF092A00787A9D /* home-icon@3x.png in Resources */,
+				8228C4F31CCF092A00787A9D /* mySchedule-icon@1x.png in Resources */,
 				82370A441CBF7311003C745A /* LaunchScreen.storyboard in Resources */,
-				82448F771CCCD9C800946836 /* myInfo-icon@1x.png in Resources */,
-				82448F781CCCD9C800946836 /* myInfo-icon@2x.png in Resources */,
-				82448F7E1CCCDD7900946836 /* mySchedule-icon@3x.png in Resources */,
-				82448F841CCCE0CA00946836 /* home-icon@1x.png in Resources */,
-				82448F7F1CCCDD7900946836 /* mySchedule-icon@2x.png in Resources */,
-				82448F791CCCD9C800946836 /* myinfo-icon@3x.png in Resources */,
-				82448F831CCCE0CA00946836 /* home-icon@2x.png in Resources */,
+				8228C5031CCF0C0C00787A9D /* home-icon-selected@3x.png in Resources */,
+				8228C5001CCF0C0C00787A9D /* myInfo-icon-selected@1x.png in Resources */,
+				8228C5091CCF0CE100787A9D /* mySchedule-icon-selected@1x.png in Resources */,
+				8228C5021CCF0C0C00787A9D /* myInfo-icon-selected@2x.png in Resources */,
+				8228C4F01CCF092A00787A9D /* home-icon@1x.png in Resources */,
+				8228C4F41CCF092A00787A9D /* mySchedule-icon@2x.png in Resources */,
+				8228C50B1CCF78CF00787A9D /* crying.png in Resources */,
+				8228C4F21CCF092A00787A9D /* myinfo-icon@3x.png in Resources */,
+				8228C5011CCF0C0C00787A9D /* home-icon-selected@1x.png in Resources */,
+				8228C50F1CD0FE6400787A9D /* appicon.png in Resources */,
+				8228C50D1CCF795200787A9D /* login.png in Resources */,
+				8228C51B1CD221E300787A9D /* person.png in Resources */,
+				8228C4F51CCF092A00787A9D /* myInfo-icon@1x.png in Resources */,
+				8228C5161CD18E2000787A9D /* Default.png in Resources */,
+				8228C4F71CCF092A00787A9D /* mySchedule-icon@3x.png in Resources */,
+				8228C4FF1CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png in Resources */,
 				82370A411CBF7311003C745A /* Assets.xcassets in Resources */,
+				8228C5051CCF0C0C00787A9D /* home-icon-selected@2x.png in Resources */,
+				8228C4F61CCF092A00787A9D /* home-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,13 +437,19 @@
 				82370A3C1CBF7311003C745A /* ViewController.swift in Sources */,
 				82448EBD1CC2398A00946836 /* memberInfoManage.swift in Sources */,
 				82448ED11CC4755B00946836 /* postRequestManage.swift in Sources */,
+				8228C4E51CCEFF5200787A9D /* extensions.swift in Sources */,
+				82166EE31CD51EC600029CF3 /* MyScheduleListViewController.swift in Sources */,
 				82448EC51CC25C6900946836 /* JoinViewController.swift in Sources */,
 				82448F2C1CC4F5D900946836 /* LogoutViewController.swift in Sources */,
 				82370A3A1CBF7311003C745A /* AppDelegate.swift in Sources */,
+				822B831A1CE16EED00F737D9 /* PayResultViewController.swift in Sources */,
 				820DA4891CC21E910019314B /* InfoWebViewViewController.swift in Sources */,
+				82166EE51CDB084700029CF3 /* PayViewController.swift in Sources */,
 				82448ECF1CC3DC3C00946836 /* ReserveViewController.swift in Sources */,
 				820DA4831CC15E9B0019314B /* schemeManage.swift in Sources */,
+				822B83181CE14B3E00F737D9 /* INIPayWebViewViewController.swift in Sources */,
 				821197AF1CC0290B00C9BC48 /* HomeWebViewViewController.swift in Sources */,
+				822B83121CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift in Sources */,
 				82448EC71CC25C9D00946836 /* MyInfoViewController.swift in Sources */,
 				82448F871CCD82AB00946836 /* FavoriteListViewController.swift in Sources */,
 				821197B11CC0893000C9BC48 /* MyScheduleViewController.swift in Sources */,
@@ -496,11 +588,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = healthjjak_guest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.healthjjak.healthjjak-guest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f77b7006-ac27-4d98-8c80-7d2adc14887f";
 			};
 			name = Debug;
 		};
@@ -508,11 +604,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = healthjjak_guest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.healthjjak.healthjjak-guest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "f77b7006-ac27-4d98-8c80-7d2adc14887f";
 			};
 			name = Release;
 		};

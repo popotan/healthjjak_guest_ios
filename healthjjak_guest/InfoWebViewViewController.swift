@@ -8,13 +8,12 @@
 
 import UIKit
 
-class InfoWebViewViewController: UIViewController, UIWebViewDelegate{
+class InfoWebViewViewController: UIViewController, UIWebViewDelegate, UIGestureRecognizerDelegate{
 	
 	var division:String!
 	var targetKey:String!
 	var info:NSDictionary!
 	var agrmt:NSDictionary!
-	let selectedScheduleKeyInfo = SelectedScheduleInfo.instance
 	
 	
 	@IBOutlet weak var loadingInfoLabel: UILabel!
@@ -25,13 +24,18 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate{
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
-		
+		print(self.targetKey)
 		if getMemberInfo() {
 			if checkAgrmt() {
 				loadWebViewInit()
 				setNativeOutlets()
 			}
 		}
+	}
+	
+	override func viewDidAppear(animated: Bool) {
+		self.navigationController?.interactivePopGestureRecognizer?.enabled = true
+		self.navigationController?.interactivePopGestureRecognizer?.delegate = self
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -45,22 +49,105 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate{
 	}
 	
 	func setNativeOutlets(){
-		navigationItem.title = (self.info["name"] as! String)
+		switch self.division {
+		case "hm":
+			navigationItem.title = (self.info["name"] as! String)
+			break
+			case "fitness":
+				navigationItem.title = (self.info["center_name"] as! String)
+				self.navigationItem.rightBarButtonItem = nil
+			break
+		default:
+			break
+		}
 	}
 	
 	@IBAction func selectButtonAction(sender: AnyObject) {
+		
+		if UserSession.sharedInstance.valid {
+		
+		//건강상태 체크
+		let baseURL = NSURL(string: "http://211.253.24.190/api/index.php/document/medicalCheckUp/get")
+		
+		do{
+			let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: .MutableContainers) as! NSDictionary
+			
+			NSOperationQueue.mainQueue().addOperationWithBlock({
+			if JSONData["state"] as! Int == 200 {
+				if JSONData["res"]!["valid"] as! Bool {
+					self.showCalendar()
+				}else{
+					let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("HealthConditionCheck") as! HealthConditionCheckWebViewViewController
+					
+					self.presentViewController(nextView, animated: true, completion: nil)
+				}
+			}else{
+				let alertView = UIAlertController.init(title: "헬스짝 알림", message: JSONData["msg"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
+				alertView.addAction(UIAlertAction(title: "확인", style: .Default, handler:nil))
+				self.presentViewController(alertView, animated: true, completion: nil)
+			}
+				})
+		}catch{
+			let alertView = UIAlertController.init(title: "헬스짝 알림", message: "네트워크 환경이 좋지 않습니다. 다시 시도해 주세요.", preferredStyle: UIAlertControllerStyle.Alert)
+			alertView.addAction(UIAlertAction(title: "확인", style: .Default, handler:nil))
+			presentViewController(alertView, animated: true, completion: nil)
+		}
+			
+		}else{
+			let alertView = UIAlertController.init(title: "헬스짝 알림", message: "로그인이 필요한 메뉴입니다.", preferredStyle: UIAlertControllerStyle.Alert)
+			alertView.addAction(UIAlertAction(title: "확인", style: .Default, handler:nil))
+			presentViewController(alertView, animated: true, completion: nil)
+		}
+	}
+	
+	func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+		let scheme:String = (request.URL?.absoluteString)!
+		let schemeManager = schemeManage(scheme)
+		
+		for (functionName, functionParam) in schemeManager.functions {
+			switch functionName {
+			case "showInfo":
+				self.showInfo(functionParam)
+				break
+			case "showMap":
+				self.showMap(functionParam)
+				break
+			default:
+				return false
+			}
+		}
+		
+		return true
+	}
+	
+	func showCalendar()  {
 		let nextView: ReserveViewController = self.storyboard?.instantiateViewControllerWithIdentifier("calendarView") as! ReserveViewController
 		
 		nextView.division = self.division
 		nextView.targetKey = self.targetKey
 		nextView.info = self.info
-		selectedScheduleKeyInfo.agrmt = self.agrmt
 		
 		self.navigationController?.pushViewController(nextView, animated: true)
 	}
 	
-	func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-		return true
+	func showInfo(param:Dictionary<String,String>) {
+		let nextView: InfoWebViewViewController = self.storyboard?.instantiateViewControllerWithIdentifier("infoView") as! InfoWebViewViewController
+		
+		nextView.division = param["division"]!
+		nextView.targetKey = param["targetKey"]!
+		
+		self.navigationController?.pushViewController(nextView, animated: true)
+	}
+	
+	func showMap(param:Dictionary<String,String>) {
+		let daumMapOpenScheme = NSURL(string:"daummaps://look?p=\(param["latitude"]!),\(param["longitude"]!)")
+		print(daumMapOpenScheme)
+		if UIApplication.sharedApplication().canOpenURL(daumMapOpenScheme!) {
+			UIApplication.sharedApplication().openURL(daumMapOpenScheme!)
+		}
+		else {
+			UIApplication.sharedApplication().openURL(NSURL(string:"http://itunes.apple.com/us/app/id304608425?mt=8")!)
+		}
 	}
 	
 	func webViewDidStartLoad(webView: UIWebView) {
@@ -85,6 +172,7 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate{
 				JSONData = JSONData["res"] as! NSDictionary
 			}else{
 				let alertView = UIAlertController.init(title: "헬스짝 알림", message: JSONData["msg"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
+				alertView.addAction(UIAlertAction(title: "확인", style: .Default, handler:nil))
 				presentViewController(alertView, animated: true, completion: nil)
 			}
 			//print(JSONData)

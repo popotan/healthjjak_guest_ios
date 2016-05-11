@@ -27,13 +27,16 @@ struct schemeManage {
 			for functionString in functionStringArray {
 				let functionName = functionString.componentsSeparatedByString("=")[0]
 				
+				if	functionString.componentsSeparatedByString("=").count > 1 {
 				let functionParamString = functionString.componentsSeparatedByString("=")[1]
-				
 				self.functions[functionName] = [:]
 				for functionParam in functionParamString.componentsSeparatedByString(",") {
 					let paramName = functionParam.componentsSeparatedByString(":")[0]
 					let paramValue = functionParam.componentsSeparatedByString(":")[1]
 					self.functions[functionName]![paramName] = paramValue
+				}
+				}else{
+					self.functions[functionName] = [:]
 				}
 			}
 			return true

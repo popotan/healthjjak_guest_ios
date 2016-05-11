@@ -8,10 +8,26 @@
 
 import UIKit
 
-class MyScheduleViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
-
-	@IBOutlet weak var leadToLoginContainerView: UIView!
+class LeadToLoginViewController: UIViewController {
+	@IBOutlet weak var loginButton: UIButton!
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		setViewStyle()
+	}
 	
+	override func didReceiveMemoryWarning() {
+		super.didReceiveMemoryWarning()
+	}
+	
+	func setViewStyle() {
+		self.loginButton.layer.masksToBounds = true
+		self.loginButton.layer.cornerRadius = 5.0
+	}
+}
+
+class MyScheduleViewController: UIViewController{
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,11 +37,16 @@ class MyScheduleViewController: UIViewController, UICollectionViewDelegate, UICo
 	
 	override func viewDidAppear(animated: Bool) {
 		//세션체크
-		UserSession.sharedInstance.getValidInfo()
 		if UserSession.sharedInstance.valid {
-			leadToLoginContainerView.hidden = true
+			let subview = self.storyboard?.instantiateViewControllerWithIdentifier("myScheduleList") as! MyScheduleListViewController
+			subview.navigationItem.title = "내 스케쥴"
+			subview.navigationItem.hidesBackButton = true
+			self.navigationController?.pushViewController(subview, animated: false)
 		}else{
-			leadToLoginContainerView.hidden = false
+			let subview = self.storyboard?.instantiateViewControllerWithIdentifier("LeadToLogin") as! LeadToLoginViewController
+			subview.navigationItem.title = "내 스케쥴"
+			subview.navigationItem.hidesBackButton = true
+			self.navigationController?.pushViewController(subview, animated: false)
 		}
 	}
 
@@ -34,18 +55,7 @@ class MyScheduleViewController: UIViewController, UICollectionViewDelegate, UICo
         // Dispose of any resources that can be recreated.
     }
 	
-	/*func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-		
-	}*/
-	
-	func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-		let cell = collectionView.dequeueReusableCellWithReuseIdentifier("scheduleCell", forIndexPath: indexPath)
-		return cell
-	}
-	
-	func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 2
-	}
+
     /*
     // MARK: - Navigation
 

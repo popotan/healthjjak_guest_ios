@@ -10,16 +10,23 @@ import UIKit
 
 class LogoutViewController: UIViewController {
 
+	@IBOutlet weak var logoutButton: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		setViewStyle()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func setViewStyle() {
+		self.logoutButton.layer.masksToBounds = true
+		self.logoutButton.layer.cornerRadius = 5.0
+	}
 	
 	@IBAction func postLogoutAction(sender: AnyObject) {
 		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/log/out")!
@@ -44,12 +51,14 @@ class LogoutViewController: UIViewController {
 				let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string:"http://211.253.24.190")!)
 				
 				for cookie in cookies! {
-					print("name: \(cookie.name) value: \(cookie.value) deleted")
 					NSHTTPCookieStorage.sharedHTTPCookieStorage().deleteCookie(cookie)
 				}
 				
 				NSOperationQueue.mainQueue().addOperationWithBlock({
 					if JSONData["state"] as! Int == 200 {
+						let userSession = UserSession.sharedInstance
+						userSession.getValidInfo()
+						
 						let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("startPage")
 						self.presentViewController(nextView!, animated: true, completion: nil)
 					}else{
@@ -69,6 +78,9 @@ class LogoutViewController: UIViewController {
 		task.resume()
 	}
 	
+	@IBAction func cancelAction(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
     /*
     // MARK: - Navigation
 

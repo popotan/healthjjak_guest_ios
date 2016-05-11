@@ -12,11 +12,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 
 	@IBOutlet weak var emailTextField: UITextField!
 	@IBOutlet weak var passwordTextField: UITextField!
+	@IBOutlet weak var loginButton: UIButton!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		setViewStyle()
     }
 
     override func didReceiveMemoryWarning() {
@@ -24,14 +26,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         // Dispose of any resources that can be recreated.
     }
 	
+	func setViewStyle() {
+		self.loginButton.layer.masksToBounds = true
+		self.loginButton.layer.cornerRadius = 5.0
+	}
+	
 	func URLEncode(s: String) -> String {
 		return (s as NSString).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
 	}
 	
 	@IBAction func postLogin(sender: AnyObject) {
-		let body = "user_id=\(URLEncode(emailTextField.text!))&user_password=\(URLEncode(passwordTextField.text!))"
+		if emailTextField.text!.isEmail {
+		let body = "user_id=\(URLEncode(emailTextField.text!))&user_password=\(URLEncode(passwordTextField.text!))&device=ios&deviceToken=\(UserSession.sharedInstance.deviceToken)"
 		let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
-		
+
 		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/log/in")!
 		let request = NSMutableURLRequest(URL: postURL)
 		request.HTTPMethod = "POST"
@@ -45,12 +53,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 				print("Fail to post content")
 			} else {
 				print("Successfully posted.")
-				print(data)
 			}
 			
 			do{
 				let JSONData = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
-				print(JSONData)
 				
 				let httpResponse = response as? NSHTTPURLResponse
 				let fields = httpResponse?.allHeaderFields as? [String:String]
@@ -67,11 +73,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 					
 					let newCookie = NSHTTPCookie(properties: cookieProperties)
 					NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie!)
-					print("name: \(cookie.name) value: \(cookie.value)")
 				}
+				
+				let userDefaults = NSUserDefaults.standardUserDefaults()
+				userDefaults.setBool(true, forKey: "LOGGED")
 				
 				NSOperationQueue.mainQueue().addOperationWithBlock({
 				if JSONData["state"] as! Int == 200 {
+					let userSession = UserSession.sharedInstance
+					userSession.getValidInfo()
+					
 					let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("startPage")
 					self.presentViewController(nextView!, animated: true, completion: nil)
 				}else{
@@ -89,6 +100,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 			}
 		}
 		task.resume()
+		}else{
+			let alertView: UIAlertController = UIAlertController.init(title: "헬스짝 알림", message: "이메일 형식에 맞지 않습니다!", preferredStyle: UIAlertControllerStyle.Alert)
+			alertView.addAction(UIAlertAction.init(title: "확인", style: UIAlertActionStyle.Cancel, handler: nil))
+			self.presentViewController(alertView, animated: true, completion: nil)
+
+		}
 	}
 	
 	@IBAction func cancelButtonAction(sender: AnyObject) {

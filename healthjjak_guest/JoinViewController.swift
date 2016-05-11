@@ -10,11 +10,17 @@ import UIKit
 
 class LoginOrJoinViewController : UIViewController {
 	
+	var cancelAble : Bool = false
 	
+	@IBOutlet weak var cancelButton: UIButton!
 	@IBOutlet weak var welcomeImage: UIImageView!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		if !cancelAble {
+			cancelButton.hidden = true
+		}
 		
 		//let gifImage = UIImage.gifWithName("")
 		//welcomeImage.image = UIImageView(image: gifImage)
@@ -22,6 +28,9 @@ class LoginOrJoinViewController : UIViewController {
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
+	}
+	@IBAction func cancelAction(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 	
 }
@@ -45,12 +54,19 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 	@IBOutlet weak var genderSegmentedControl: UISegmentedControl!
 	@IBOutlet weak var formScrollView: JoinScrollViewController!
 	@IBOutlet weak var gotoStartPageButton: UIButton!
+	@IBOutlet weak var joinButton: UIButton!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+
 		if self.restorationIdentifier != nil && self.restorationIdentifier! == "joinForm" {
-		self.formScrollView.contentSize = CGSize(width: 320, height: 446)
+			self.joinButton.layer.masksToBounds = true
+			self.joinButton.layer.cornerRadius = 5.0
+		self.formScrollView.contentSize = CGSize(width: 320, height: 422)
+			
+			NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(JoinViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+			NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(JoinViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
 		}
 		if self.restorationIdentifier != nil && self.restorationIdentifier! == "welcome" {
 			self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -64,6 +80,18 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+	
+	func keyboardWillShow(notification: NSNotification) {
+		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+			formScrollView.setContentOffset(CGPointMake(0.0, (keyboardSize.height - 40.0)), animated: true)
+		}
+	}
+	
+	func keyboardWillHide(notification: NSNotification) {
+		if let keyboardSize = (notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue() {
+			formScrollView.setContentOffset(CGPointMake(0.0, 0.0), animated: true)
+		}
+	}
 	
 	func postLogin() {
 		let body = "user_id=\(URLEncode(self.infoInstance.email!))&user_password=\(URLEncode(infoInstance.password!))"
@@ -104,12 +132,17 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 					
 					let newCookie = NSHTTPCookie(properties: cookieProperties)
 					NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookie(newCookie!)
-					print("name: \(cookie.name) value: \(cookie.value)")
 				}
+				
+				let userDefaults = NSUserDefaults.standardUserDefaults()
+				userDefaults.setBool(true, forKey: "LOGGED")
 				
 				NSOperationQueue.mainQueue().addOperationWithBlock({
 					if JSONData["state"] as! Int == 200 {
 						//성공시
+						let userSession = UserSession.sharedInstance
+						userSession.getValidInfo()
+						
 						self.gotoStartPageButton.hidden = false
 					}else{
 						let alertView: UIAlertController = UIAlertController.init(title: "헬스짝 알림", message: "\(JSONData["msg"] as! String)", preferredStyle: UIAlertControllerStyle.Alert)
@@ -132,9 +165,13 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 	func URLEncode(s: String) -> String {
 		return (s as NSString).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
 	}
+	
+	@IBAction func joinCancelAction(sender: AnyObject) {
+		self.dismissViewControllerAnimated(true, completion: nil)
+	}
     
 	@IBAction func doubletCheck(sender: AnyObject) {
-		if emailField.text! != "" {
+		if emailField.text! != "" && emailField.text!.isEmail {
 		let body = "email=\(URLEncode(emailField.text!))"
 		let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 		

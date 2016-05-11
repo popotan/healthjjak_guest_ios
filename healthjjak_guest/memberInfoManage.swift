@@ -52,7 +52,20 @@ class JoinInfoManage {
 	static let instance = JoinInfoManage()
 }
 
-class UserSession : NSObject {
+class UserSession {
+	var deviceTokenFullString:String = "" {
+		willSet(newValue){
+			var newValue1 = newValue.stringByReplacingOccurrencesOfString("<", withString: "")
+			newValue1 = newValue1.stringByReplacingOccurrencesOfString(">", withString: "")
+			deviceToken = newValue1.stringByReplacingOccurrencesOfString(" ", withString: "")
+
+		}
+		didSet{
+			
+		}
+	}
+	var deviceToken:String = ""
+	
 	var valid: Bool = false {
 		willSet{
 			if newValue {
@@ -60,17 +73,9 @@ class UserSession : NSObject {
 			}
 		}
 		didSet{
-			print("valid : \(self.valid)")
 		}
 	}
-	var info:NSDictionary = [:] {
-		willSet{
-			
-		}
-		didSet{
-			print("info : \(self.info)")
-		}
-	}
+	var info:NSDictionary = [:]
 	
 	static let sharedInstance = UserSession()
 	
@@ -80,76 +85,29 @@ class UserSession : NSObject {
 		do{
 		let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
 			
-		self.valid = JSONData["valid"] as! Bool
+			NSOperationQueue.mainQueue().addOperationWithBlock({
+					self.valid = JSONData["valid"] as! Bool
+			})
 		}catch{
 			self.valid = false
 		}
 	}
 	
 	func getUserSessionInfo() {
-		let baseURL = NSURL(string:"http://211.253.24.190/api/index.php/log/info")
+		let baseURL = NSURL(string:"http://211.253.24.190/api/index.php/log/info/get")
 		
 		do{
 		let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
 			
-			if JSONData["state"] as! Int == 200 {
-				self.info = (JSONData["res"] as? NSDictionary)!
-			}else{
-				self.info = [:]
-			}
+			NSOperationQueue.mainQueue().addOperationWithBlock({
+				if JSONData["state"] as! Int == 200 {
+					self.info = (JSONData["res"] as? NSDictionary)!
+				}else{
+					self.info = [:]
+				}
+			})
 		}catch{
 			self.info = [:]
 		}
-	}
-}
-
-class SelectedScheduleInfo {
-	var agrmt:NSDictionary = [:]
-	var selectedScheduleKey:[String] = [] {
-		willSet{
-			
-		}
-		didSet{
-			self.totalPrice = selectedScheduleKey.count * Int((self.agrmt["info"]! as! NSDictionary)["price"]! as! String)!
-		}
-	}
-	
-	var totalPrice = 0 {
-		willSet{
-			
-		}
-		didSet{
-			self.vatPrice = Int(Double(totalPrice) * 0.1)
-		}
-	}
-	
-	var vatPrice = 0 {
-		willSet{
-			
-		}
-		didSet{
-			self.finalPriceToPay = totalPrice + vatPrice
-		}
-	}
-	
-	var finalPriceToPay = 0
-	
-	static let instance = SelectedScheduleInfo()
-	
-	func addScheduleKey(scheduleKey:String) {
-		self.selectedScheduleKey.append(scheduleKey)
-	}
-	
-	func removeScheduleKey(scheduleKey:String) {
-		for (index, key) in self.selectedScheduleKey.enumerate() {
-			if key == scheduleKey {
-				self.selectedScheduleKey.removeAtIndex(index)
-			}
-		}
-	}
-	
-	func removeScheduleKey(fromIndex:Int) {
-		print("fromIndex")
-		self.selectedScheduleKey.removeAtIndex(fromIndex)
 	}
 }
