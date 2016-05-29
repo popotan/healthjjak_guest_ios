@@ -63,7 +63,7 @@ class ReserveViewController: UIViewController, UIWebViewDelegate, UIGestureRecog
 	}
 	
 	func loadWebViewInit(){
-		let homeURL = NSURL(string:"http://211.253.24.190/webview/#/reserve/\(self.targetKey)")
+		let homeURL = NSURL(string:"https://healthjjak.com/webview/#/reserve/\(self.targetKey)")
 		calendarWebView.loadRequest(NSURLRequest(URL: homeURL!))
 	}
 	

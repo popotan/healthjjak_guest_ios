@@ -55,19 +55,28 @@ class INIPayWebViewViewController: UIViewController, UIWebViewDelegate {
 		body += "&P_MOBILE=\(URLEncode((self.user.info["phone"] as! String).stringByReplacingOccurrencesOfString("-", withString: "")))"
 		body += "&P_EMAIL=\(URLEncode(self.user.info["email"] as! String))"
 		body += "&P_MID=INIpayTest"
-		//가상계좌시
-		body += "&P_NEXT_URL=\(URLEncode("http://211.253.24.190/webview/#/reserve/cancel"))"
+		
+		//성공시 결제정보가 넘어가는 페이지
+		body += "&P_NEXT_URL=\(URLEncode("https://healthjjak.com/api/index.php/INIPay/noti"))"
+		
+		//디비저장을 위한 페이지
 		body += "&P_NOTI_URL=\(URLEncode("http://ts.inicis.com/~esjeong/mobile_rnoti/rnoti.php"))"
+		
 		//body += "&P_HPP_METHOD=1"
 		body += "&P_TAX=\(self.P_TAX)"
 		body += "&P_QUOTABASE=01:02:03"
 		body += "&P_CHARSET=utf8"
-		body += "&P_CANCEL_URL=\(URLEncode("http://211.253.24.190/webview/#/reserve/cancel"))"
+		
+		//취소버튼 작동 시 리다이렉트 주소
+		body += "&P_CANCEL_URL=\(URLEncode("https://healthjjak.com/webview/#/reserveCancel"))"
 		body += "&P_APP_BASE=ON"
+		
 		//계좌이체시
 		//body += "&P_RETURN_URL=\(URLEncode("https://mobile.inicis.com/smart/testmall/return_url_test.php?OID=\(self.P_OID)"))"
-		//취소버튼 작동 시 리다이렉트 주소
-		body += "&P_RETURN_URL=\(URLEncode("http://211.253.24.190/webview/#/reserveCancel"))"
+		
+		//결제 최종 완료후, 호출할 페이지 & 취소시 호출되는 페이지
+		body += "&P_RETURN_URL=\(URLEncode("https://healthjjak.com/api/index.php/INIpay/result"))"
+		
 		body += "&P_RESERVED=\(URLEncode("twotrs_isp=Y&block_isp=Y&twotrs_isp_noti=N&cp_yn=Y&apprun_check=Y&ismart_use_sign=Y& mall_app_name=healthjjakguest&app_scheme=healthjjakguest://"))"
 		print(body)
 		
@@ -113,6 +122,9 @@ class INIPayWebViewViewController: UIViewController, UIWebViewDelegate {
 		
 		for (functionName, functionParam) in schemeManager.functions {
 			switch functionName {
+				case "success":
+					self.success(functionParam)
+				break
 			case "cancel":
 				self.cancel(functionParam)
 				break
@@ -132,8 +144,15 @@ class INIPayWebViewViewController: UIViewController, UIWebViewDelegate {
 		
 	}
 	
+	func success(params: Dictionary<String,String>) {
+		print("성공")
+		let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("PayResultView") as! PayResultViewController
+		nextView.result = true
+		self.presentViewController(nextView, animated: true, completion: nil)
+	}
+	
 	func cancel(params : Dictionary<String,String>) {
-		print("작동")
+		print("취소")
 		self.dismissViewControllerAnimated(true, completion: nil)
 	}
 

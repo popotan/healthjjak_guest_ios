@@ -12,17 +12,10 @@ class LeadToLoginViewController: UIViewController {
 	@IBOutlet weak var loginButton: UIButton!
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		setViewStyle()
 	}
 	
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
-	}
-	
-	func setViewStyle() {
-		self.loginButton.layer.masksToBounds = true
-		self.loginButton.layer.cornerRadius = 5.0
 	}
 }
 
@@ -35,7 +28,7 @@ class MyScheduleViewController: UIViewController{
 		
     }
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewWillAppear(animated: Bool) {
 		//세션체크
 		if UserSession.sharedInstance.valid {
 			let subview = self.storyboard?.instantiateViewControllerWithIdentifier("myScheduleList") as! MyScheduleListViewController

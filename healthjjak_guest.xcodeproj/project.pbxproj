@@ -43,8 +43,13 @@
 		822B83161CE0006300F737D9 /* arrow-down.png in Resources */ = {isa = PBXBuildFile; fileRef = 822B83151CE0006300F737D9 /* arrow-down.png */; };
 		822B83181CE14B3E00F737D9 /* INIPayWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */; };
 		822B831A1CE16EED00F737D9 /* PayResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83191CE16EED00F737D9 /* PayResultViewController.swift */; };
+		822B83221CE37C6600F737D9 /* person-large.png in Resources */ = {isa = PBXBuildFile; fileRef = 822B83211CE37C6600F737D9 /* person-large.png */; };
+		822B83241CE3A26F00F737D9 /* logo-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = 822B83231CE3A26F00F737D9 /* logo-transparent.png */; };
+		822B83261CE7495500F737D9 /* ScheduleinfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83251CE7495500F737D9 /* ScheduleinfoViewController.swift */; };
+		822B83281CE781BC00F737D9 /* phone.png in Resources */ = {isa = PBXBuildFile; fileRef = 822B83271CE781BC00F737D9 /* phone.png */; };
+		822B832A1CE82B5A00F737D9 /* RaiusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B83291CE82B5900F737D9 /* RaiusView.swift */; };
+		822B832D1CE82CD100F737D9 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 822B832C1CE82CD100F737D9 /* SubmitButton.swift */; };
 		82370A3A1CBF7311003C745A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82370A391CBF7311003C745A /* AppDelegate.swift */; };
-		82370A3C1CBF7311003C745A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82370A3B1CBF7311003C745A /* ViewController.swift */; };
 		82370A411CBF7311003C745A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82370A401CBF7311003C745A /* Assets.xcassets */; };
 		82370A441CBF7311003C745A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82370A421CBF7311003C745A /* LaunchScreen.storyboard */; };
 		82370A4F1CBF7311003C745A /* healthjjak_guestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82370A4E1CBF7311003C745A /* healthjjak_guestTests.swift */; };
@@ -61,6 +66,9 @@
 		82448F301CCCD2FD00946836 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */; };
 		82448F871CCD82AB00946836 /* FavoriteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F861CCD82AB00946836 /* FavoriteListViewController.swift */; };
 		82448F891CCDAF1B00946836 /* UIImage+Gif.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82448F881CCDAF1B00946836 /* UIImage+Gif.swift */; };
+		82E5FF301CF10D3100AFB7CF /* IamportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82E5FF2F1CF10D3100AFB7CF /* IamportViewController.swift */; };
+		82E5FF321CF84EAD00AFB7CF /* refresh-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E5FF311CF84EAD00AFB7CF /* refresh-icon.png */; };
+		82EFCB241CEA7A5A0023A298 /* PayHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82EFCB231CEA7A5A0023A298 /* PayHistoryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -117,9 +125,14 @@
 		822B83151CE0006300F737D9 /* arrow-down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-down.png"; sourceTree = "<group>"; };
 		822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = INIPayWebViewViewController.swift; path = ../INIPayWebViewViewController.swift; sourceTree = "<group>"; };
 		822B83191CE16EED00F737D9 /* PayResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayResultViewController.swift; sourceTree = "<group>"; };
+		822B83211CE37C6600F737D9 /* person-large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person-large.png"; sourceTree = "<group>"; };
+		822B83231CE3A26F00F737D9 /* logo-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo-transparent.png"; sourceTree = "<group>"; };
+		822B83251CE7495500F737D9 /* ScheduleinfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleinfoViewController.swift; sourceTree = "<group>"; };
+		822B83271CE781BC00F737D9 /* phone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = phone.png; sourceTree = "<group>"; };
+		822B83291CE82B5900F737D9 /* RaiusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RaiusView.swift; sourceTree = "<group>"; };
+		822B832C1CE82CD100F737D9 /* SubmitButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		82370A361CBF7311003C745A /* healthjjak_guest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = healthjjak_guest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82370A391CBF7311003C745A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		82370A3B1CBF7311003C745A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82370A401CBF7311003C745A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82370A431CBF7311003C745A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82370A451CBF7311003C745A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -141,6 +154,9 @@
 		82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
 		82448F861CCD82AB00946836 /* FavoriteListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteListViewController.swift; sourceTree = "<group>"; };
 		82448F881CCDAF1B00946836 /* UIImage+Gif.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Gif.swift"; sourceTree = "<group>"; };
+		82E5FF2F1CF10D3100AFB7CF /* IamportViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IamportViewController.swift; sourceTree = "<group>"; };
+		82E5FF311CF84EAD00AFB7CF /* refresh-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "refresh-icon.png"; sourceTree = "<group>"; };
+		82EFCB231CEA7A5A0023A298 /* PayHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PayHistoryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +184,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		822B832B1CE82B6300F737D9 /* UIStyle */ = {
+			isa = PBXGroup;
+			children = (
+				822B83291CE82B5900F737D9 /* RaiusView.swift */,
+				822B832C1CE82CD100F737D9 /* SubmitButton.swift */,
+			);
+			name = UIStyle;
+			sourceTree = "<group>";
+		};
 		82370A2D1CBF7311003C745A = {
 			isa = PBXGroup;
 			children = (
@@ -191,31 +216,12 @@
 		82370A381CBF7311003C745A /* healthjjak_guest */ = {
 			isa = PBXGroup;
 			children = (
+				82E5FF2E1CF0D16B00AFB7CF /* controllers */,
+				82E5FF2D1CF0D12700AFB7CF /* includes */,
+				822B832B1CE82B6300F737D9 /* UIStyle */,
 				82448F6D1CCCD89E00946836 /* resources */,
 				82448EC81CC25E0B00946836 /* Main.storyboard */,
-				822B83191CE16EED00F737D9 /* PayResultViewController.swift */,
-				822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */,
-				82166EE41CDB084700029CF3 /* PayViewController.swift */,
-				822B83111CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift */,
-				82448F881CCDAF1B00946836 /* UIImage+Gif.swift */,
-				82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */,
-				82448ECE1CC3DC3C00946836 /* ReserveViewController.swift */,
-				82448ECC1CC36E9800946836 /* LoginViewController.swift */,
-				8228C4E41CCEFF5200787A9D /* extensions.swift */,
-				82448ECA1CC26E7B00946836 /* JoinNavigationController.swift */,
 				82370A391CBF7311003C745A /* AppDelegate.swift */,
-				82370A3B1CBF7311003C745A /* ViewController.swift */,
-				82448EC41CC25C6900946836 /* JoinViewController.swift */,
-				82448EC61CC25C9D00946836 /* MyInfoViewController.swift */,
-				821197B01CC0893000C9BC48 /* MyScheduleViewController.swift */,
-				82448F861CCD82AB00946836 /* FavoriteListViewController.swift */,
-				82166EE21CD51EC600029CF3 /* MyScheduleListViewController.swift */,
-				821197AE1CC0290B00C9BC48 /* HomeWebViewViewController.swift */,
-				820DA4881CC21E910019314B /* InfoWebViewViewController.swift */,
-				82448EBC1CC2398A00946836 /* memberInfoManage.swift */,
-				82448ED01CC4755B00946836 /* postRequestManage.swift */,
-				82448F2B1CC4F5D900946836 /* LogoutViewController.swift */,
-				820DA4821CC15E9B0019314B /* schemeManage.swift */,
 				82370A401CBF7311003C745A /* Assets.xcassets */,
 				82370A421CBF7311003C745A /* LaunchScreen.storyboard */,
 				82370A451CBF7311003C745A /* Info.plist */,
@@ -244,6 +250,7 @@
 		82448F6D1CCCD89E00946836 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				82E5FF311CF84EAD00AFB7CF /* refresh-icon.png */,
 				8228C4E61CCF092A00787A9D /* home-icon@3x.png */,
 				8228C4E71CCF092A00787A9D /* home-icon@1x.png */,
 				8228C4E81CCF092A00787A9D /* myInfo-icon@2x.png */,
@@ -269,9 +276,50 @@
 				8228C5141CD18E2000787A9D /* Default.png */,
 				8228C5151CD18E2000787A9D /* Default@2x.png */,
 				8228C51A1CD221E300787A9D /* person.png */,
+				822B83211CE37C6600F737D9 /* person-large.png */,
+				822B83231CE3A26F00F737D9 /* logo-transparent.png */,
+				822B83271CE781BC00F737D9 /* phone.png */,
 				822B83151CE0006300F737D9 /* arrow-down.png */,
 			);
 			name = resources;
+			sourceTree = "<group>";
+		};
+		82E5FF2D1CF0D12700AFB7CF /* includes */ = {
+			isa = PBXGroup;
+			children = (
+				82448F881CCDAF1B00946836 /* UIImage+Gif.swift */,
+				8228C4E41CCEFF5200787A9D /* extensions.swift */,
+				82448EBC1CC2398A00946836 /* memberInfoManage.swift */,
+				82448ED01CC4755B00946836 /* postRequestManage.swift */,
+				820DA4821CC15E9B0019314B /* schemeManage.swift */,
+			);
+			name = includes;
+			sourceTree = "<group>";
+		};
+		82E5FF2E1CF0D16B00AFB7CF /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				82EFCB231CEA7A5A0023A298 /* PayHistoryViewController.swift */,
+				822B83191CE16EED00F737D9 /* PayResultViewController.swift */,
+				822B83171CE14B3E00F737D9 /* INIPayWebViewViewController.swift */,
+				82166EE41CDB084700029CF3 /* PayViewController.swift */,
+				822B83111CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift */,
+				82448F2F1CCCD2FD00946836 /* MainTabBarViewController.swift */,
+				82448ECE1CC3DC3C00946836 /* ReserveViewController.swift */,
+				82448ECC1CC36E9800946836 /* LoginViewController.swift */,
+				82448ECA1CC26E7B00946836 /* JoinNavigationController.swift */,
+				82448EC41CC25C6900946836 /* JoinViewController.swift */,
+				82448EC61CC25C9D00946836 /* MyInfoViewController.swift */,
+				821197B01CC0893000C9BC48 /* MyScheduleViewController.swift */,
+				82448F861CCD82AB00946836 /* FavoriteListViewController.swift */,
+				82166EE21CD51EC600029CF3 /* MyScheduleListViewController.swift */,
+				822B83251CE7495500F737D9 /* ScheduleinfoViewController.swift */,
+				821197AE1CC0290B00C9BC48 /* HomeWebViewViewController.swift */,
+				820DA4881CC21E910019314B /* InfoWebViewViewController.swift */,
+				82448F2B1CC4F5D900946836 /* LogoutViewController.swift */,
+				82E5FF2F1CF10D3100AFB7CF /* IamportViewController.swift */,
+			);
+			name = controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -401,12 +449,16 @@
 				8228C50F1CD0FE6400787A9D /* appicon.png in Resources */,
 				8228C50D1CCF795200787A9D /* login.png in Resources */,
 				8228C51B1CD221E300787A9D /* person.png in Resources */,
+				822B83281CE781BC00F737D9 /* phone.png in Resources */,
 				8228C4F51CCF092A00787A9D /* myInfo-icon@1x.png in Resources */,
 				8228C5161CD18E2000787A9D /* Default.png in Resources */,
+				822B83241CE3A26F00F737D9 /* logo-transparent.png in Resources */,
 				8228C4F71CCF092A00787A9D /* mySchedule-icon@3x.png in Resources */,
 				8228C4FF1CCF0C0C00787A9D /* mySchedule-icon-selected@2x.png in Resources */,
 				82370A411CBF7311003C745A /* Assets.xcassets in Resources */,
+				82E5FF321CF84EAD00AFB7CF /* refresh-icon.png in Resources */,
 				8228C5051CCF0C0C00787A9D /* home-icon-selected@2x.png in Resources */,
+				822B83221CE37C6600F737D9 /* person-large.png in Resources */,
 				8228C4F61CCF092A00787A9D /* home-icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -434,15 +486,17 @@
 			files = (
 				82448F891CCDAF1B00946836 /* UIImage+Gif.swift in Sources */,
 				82448F301CCCD2FD00946836 /* MainTabBarViewController.swift in Sources */,
-				82370A3C1CBF7311003C745A /* ViewController.swift in Sources */,
+				82EFCB241CEA7A5A0023A298 /* PayHistoryViewController.swift in Sources */,
 				82448EBD1CC2398A00946836 /* memberInfoManage.swift in Sources */,
 				82448ED11CC4755B00946836 /* postRequestManage.swift in Sources */,
 				8228C4E51CCEFF5200787A9D /* extensions.swift in Sources */,
+				822B83261CE7495500F737D9 /* ScheduleinfoViewController.swift in Sources */,
 				82166EE31CD51EC600029CF3 /* MyScheduleListViewController.swift in Sources */,
 				82448EC51CC25C6900946836 /* JoinViewController.swift in Sources */,
 				82448F2C1CC4F5D900946836 /* LogoutViewController.swift in Sources */,
 				82370A3A1CBF7311003C745A /* AppDelegate.swift in Sources */,
 				822B831A1CE16EED00F737D9 /* PayResultViewController.swift in Sources */,
+				822B832A1CE82B5A00F737D9 /* RaiusView.swift in Sources */,
 				820DA4891CC21E910019314B /* InfoWebViewViewController.swift in Sources */,
 				82166EE51CDB084700029CF3 /* PayViewController.swift in Sources */,
 				82448ECF1CC3DC3C00946836 /* ReserveViewController.swift in Sources */,
@@ -451,10 +505,12 @@
 				821197AF1CC0290B00C9BC48 /* HomeWebViewViewController.swift in Sources */,
 				822B83121CDF23A800F737D9 /* HealthConditionCheckWebViewViewController.swift in Sources */,
 				82448EC71CC25C9D00946836 /* MyInfoViewController.swift in Sources */,
+				822B832D1CE82CD100F737D9 /* SubmitButton.swift in Sources */,
 				82448F871CCD82AB00946836 /* FavoriteListViewController.swift in Sources */,
 				821197B11CC0893000C9BC48 /* MyScheduleViewController.swift in Sources */,
 				82448ECB1CC26E7B00946836 /* JoinNavigationController.swift in Sources */,
 				82448ECD1CC36E9800946836 /* LoginViewController.swift in Sources */,
+				82E5FF301CF10D3100AFB7CF /* IamportViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,7 +652,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.healthjjak.healthjjak-guest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f77b7006-ac27-4d98-8c80-7d2adc14887f";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -612,7 +668,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.healthjjak.healthjjak-guest";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "f77b7006-ac27-4d98-8c80-7d2adc14887f";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

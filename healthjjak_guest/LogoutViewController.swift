@@ -29,7 +29,7 @@ class LogoutViewController: UIViewController {
 	}
 	
 	@IBAction func postLogoutAction(sender: AnyObject) {
-		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/log/out")!
+		let postURL = NSURL(string:"https://healthjjak.com/api/index.php/log/out")!
 		let request = NSMutableURLRequest(URL: postURL)
 		request.HTTPMethod = "POST"
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -48,7 +48,7 @@ class LogoutViewController: UIViewController {
 				let JSONData = try NSJSONSerialization.JSONObjectWithData(data!, options: []) as! NSDictionary
 				print(JSONData)
 				
-				let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string:"http://211.253.24.190")!)
+				let cookies = NSHTTPCookieStorage.sharedHTTPCookieStorage().cookiesForURL(NSURL(string:"https://healthjjak.com")!)
 				
 				for cookie in cookies! {
 					NSHTTPCookieStorage.sharedHTTPCookieStorage().deleteCookie(cookie)

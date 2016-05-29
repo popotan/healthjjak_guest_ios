@@ -24,7 +24,7 @@ class HealthConditionCheckWebViewViewController: UIViewController, UIWebViewDele
     }
 	
 	func loadWebViewInit(){
-		let homeURL = NSURL(string:"http://211.253.24.190/webview/#/healthCheck")
+		let homeURL = NSURL(string:"https://healthjjak.com/webview/#/healthCheck")
 		healthCheckWebView.loadRequest(NSURLRequest(URL: homeURL!))
 	}
 	

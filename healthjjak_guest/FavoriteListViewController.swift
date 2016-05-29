@@ -32,7 +32,7 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
     }
 	
 	func getList(){
-		let baseURL = NSURL(string: "http://211.253.24.190/api/index.php/react/favorite/get?purpose=list")
+		let baseURL = NSURL(string: "https://healthjjak.com/api/index.php/react/favorite/get?purpose=list")
 		
 		do{
 			let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: .MutableContainers) as! NSDictionary
@@ -88,7 +88,7 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
 			return gradeStr
 		}()
 		cell.infoLabel.text = "좋아요 \(self.favoriteList["hm"]![indexPath.row]["info"]!!["star"] as! Int) | \(self.favoriteList["hm"]![indexPath.row]["info"]!!["activeTime"] as! Int)시간 활동 | \(self.favoriteList["hm"]![indexPath.row]["info"]!!["review_count"] as! Int)개 평가"
-		cell.logoImgView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: "http://211.253.24.190/userimgs/\(self.favoriteList["hm"]![indexPath.row]["info"]!!["logo_img"] as! String)")!)!)
+		cell.logoImgView.image = UIImage(data: NSData(contentsOfURL: NSURL(string: "https://healthjjak.com/html/userimgs/\(self.favoriteList["hm"]![indexPath.row]["info"]!!["logo_img"] as! String)")!)!)
 		cell.logoImgView.layer.masksToBounds = true
 		cell.logoImgView.layer.cornerRadius = cell.logoImgView.frame.size.width / 2
 		return cell
@@ -97,6 +97,11 @@ class FavoriteListViewController: UIViewController, UITableViewDelegate, UITable
 	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
 		let memberKey = self.favoriteList["hm"]![indexPath.row]["info"]!!["member_key"] as! String
 		performSegueWithIdentifier("gotoInfoView", sender: memberKey)
+	}
+	
+	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.separatorInset = UIEdgeInsetsZero
+		cell.layoutMargins = UIEdgeInsetsZero
 	}
 	
 	//sender로 memberKey를 전송함

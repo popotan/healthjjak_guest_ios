@@ -61,8 +61,6 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
         // Do any additional setup after loading the view.
 
 		if self.restorationIdentifier != nil && self.restorationIdentifier! == "joinForm" {
-			self.joinButton.layer.masksToBounds = true
-			self.joinButton.layer.cornerRadius = 5.0
 		self.formScrollView.contentSize = CGSize(width: 320, height: 422)
 			
 			NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(JoinViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
@@ -97,7 +95,7 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 		let body = "user_id=\(URLEncode(self.infoInstance.email!))&user_password=\(URLEncode(infoInstance.password!))"
 		let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 		
-		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/log/in")!
+		let postURL = NSURL(string:"https://healthjjak.com/api/index.php/log/in")!
 		let request = NSMutableURLRequest(URL: postURL)
 		request.HTTPMethod = "POST"
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -119,8 +117,8 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 				
 				let httpResponse = response as? NSHTTPURLResponse
 				let fields = httpResponse?.allHeaderFields as? [String:String]
-				let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields!, forURL: NSURL(string:"http://211.253.24.190")!)
-				NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(cookies, forURL: NSURL(string:"http://211.253.24.190")!, mainDocumentURL: NSURL(string:"http://211.253.24.190")!)
+				let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields!, forURL: NSURL(string:"https://healthjjak.com")!)
+				NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(cookies, forURL: NSURL(string:"https://healthjjak.com")!, mainDocumentURL: NSURL(string:"https://healthjjak.com")!)
 				for cookie in cookies {
 					var cookieProperties = [String: AnyObject]()
 					cookieProperties[NSHTTPCookieName] = cookie.name
@@ -175,7 +173,7 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 		let body = "email=\(URLEncode(emailField.text!))"
 		let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 		
-		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/join/emailCheck")!
+		let postURL = NSURL(string:"https://healthjjak.com/api/index.php/join/emailCheck")!
 		let request = NSMutableURLRequest(URL: postURL)
 		request.HTTPMethod = "POST"
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -225,7 +223,7 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 			let body = "phone=\(URLEncode(phoneField.text!))"
 			let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 			
-			let postURL = NSURL(string:"http://211.253.24.190/api/index.php/certificationKey/send_phone")!
+			let postURL = NSURL(string:"https://healthjjak.com/api/index.php/certificationKey/send_phone")!
 			let request = NSMutableURLRequest(URL: postURL)
 			request.HTTPMethod = "POST"
 			request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -276,7 +274,7 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 			let body = "code=\(URLEncode(verifyCodeField.text!))&hash=\(URLEncode(self.infoInstance.certiKeyHash!))"
 			let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 			
-			let postURL = NSURL(string:"http://211.253.24.190/api/index.php/certificationKey/check")!
+			let postURL = NSURL(string:"https://healthjjak.com/api/index.php/certificationKey/check")!
 			let request = NSMutableURLRequest(URL: postURL)
 			request.HTTPMethod = "POST"
 			request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -344,7 +342,7 @@ class JoinViewController: UIViewController, UIScrollViewDelegate, UITextFieldDel
 			let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 			print(bodyData)
 			
-			let postURL = NSURL(string:"http://211.253.24.190/api/index.php/join/guest/post")!
+			let postURL = NSURL(string:"https://healthjjak.com/api/index.php/join/guest/post")!
 			let request = NSMutableURLRequest(URL: postURL)
 			request.HTTPMethod = "POST"
 			request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")

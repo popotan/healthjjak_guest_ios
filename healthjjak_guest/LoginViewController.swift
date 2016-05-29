@@ -18,18 +18,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-		setViewStyle()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-	
-	func setViewStyle() {
-		self.loginButton.layer.masksToBounds = true
-		self.loginButton.layer.cornerRadius = 5.0
-	}
 	
 	func URLEncode(s: String) -> String {
 		return (s as NSString).stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
@@ -40,7 +34,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 		let body = "user_id=\(URLEncode(emailTextField.text!))&user_password=\(URLEncode(passwordTextField.text!))&device=ios&deviceToken=\(UserSession.sharedInstance.deviceToken)"
 		let bodyData = (body as NSString).dataUsingEncoding(NSUTF8StringEncoding)
 
-		let postURL = NSURL(string:"http://211.253.24.190/api/index.php/log/in")!
+		let postURL = NSURL(string:"https://healthjjak.com/api/index.php/log/in")!
 		let request = NSMutableURLRequest(URL: postURL)
 		request.HTTPMethod = "POST"
 		request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField:"Content-Type")
@@ -60,8 +54,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 				
 				let httpResponse = response as? NSHTTPURLResponse
 				let fields = httpResponse?.allHeaderFields as? [String:String]
-				let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields!, forURL: NSURL(string:"http://211.253.24.190")!)
-				NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(cookies, forURL: NSURL(string:"http://211.253.24.190")!, mainDocumentURL: NSURL(string:"http://211.253.24.190")!)
+				let cookies = NSHTTPCookie.cookiesWithResponseHeaderFields(fields!, forURL: NSURL(string:"https://healthjjak.com")!)
+				NSHTTPCookieStorage.sharedHTTPCookieStorage().setCookies(cookies, forURL: NSURL(string:"https://healthjjak.com")!, mainDocumentURL: NSURL(string:"https://healthjjak.com")!)
 				for cookie in cookies {
 					var cookieProperties = [String: AnyObject]()
 					cookieProperties[NSHTTPCookieName] = cookie.name
@@ -117,7 +111,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate{
 	}
 	
 	func textFieldShouldReturn(textField: UITextField) -> Bool {
-		if textField.restorationIdentifier != nil{
+		if textField.restorationIdentifier != nil {
 			if textField.restorationIdentifier! == "passwordField" {
 				print("password")
 			}

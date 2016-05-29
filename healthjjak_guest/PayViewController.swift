@@ -25,28 +25,56 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 	}
 	var VAT: Int = 0
 
+	@IBOutlet weak var cancelButton: UIButton!
+	@IBOutlet weak var selectedScheduleListView: UIView!
 	@IBOutlet weak var cardButton: UIButton!
 	@IBOutlet weak var directBankButton: UIButton!
 	@IBOutlet weak var payMethodSelectSubView: UIView!
 	@IBOutlet weak var payInfoSubView: UIView!
 	@IBOutlet weak var scrollView: UIScrollView!
 	@IBOutlet weak var selectScheduleLengthLabel: UILabel!
-	@IBOutlet weak var unitPriceLabel: UILabel!
+	@IBOutlet weak var VATPriceLabel: UILabel!
 	@IBOutlet weak var totalPriceLabel: UILabel!
 	@IBOutlet weak var payButton: UIButton!
+	@IBOutlet weak var selectedScheduleTable: UITableView!
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
 		getScheduleInfo()
-		setViewStyle()
 		setLabelText()
     }
 	
 	override func viewWillAppear(animated: Bool) {
+		selectedScheduleTable.frame = CGRectMake(0, 37, self.selectedScheduleListView.frame.width, CGFloat(44*scheduleKeyArr.count))
+		
+		selectedScheduleListView.frame = CGRectMake(20, 8, self.view.frame.width - 40, selectedScheduleTable.frame.height + 37)
+		
+		var nextSubViewPositionY = self.selectedScheduleListView.frame.height + 8 + 8
+		//결제정보 위치 조정
+		payInfoSubView.frame = CGRectMake(20, nextSubViewPositionY, self.view.frame.width - 40, 128)
+		
+		nextSubViewPositionY = nextSubViewPositionY + payInfoSubView.frame.height + 8
+		
+		//결제수단선택 위치 조정
+		payMethodSelectSubView.frame = CGRectMake(20, nextSubViewPositionY, self.view.frame.width - 40, 147)
+		
+		nextSubViewPositionY = nextSubViewPositionY + payMethodSelectSubView.frame.height + 8
+		
+		//결제버튼 위치 조정
+		payButton.frame = CGRectMake(20, nextSubViewPositionY, self.view.frame.width - 40, 50)
+		
+		nextSubViewPositionY = nextSubViewPositionY + payButton.frame.height + 8
+		
+		//취소버튼 위치 조정
+		cancelButton.frame = CGRectMake(20, nextSubViewPositionY, self.view.frame.width - 40, 50)
+		
 		scrollView.frame = CGRectMake(0, 20, self.view.frame.width, self.view.frame.height - 20)
-		scrollView.contentSize = CGSizeMake(320, 700)
+		scrollView.contentSize = CGSizeMake(320, nextSubViewPositionY + 60)
+		
+		//tableView Scroll Disable
+		self.selectedScheduleTable.scrollEnabled = false
 	}
 	
     override func didReceiveMemoryWarning() {
@@ -55,7 +83,7 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 	
 	func getScheduleInfo() {
-		let baseURL = NSURL(string: "http://211.253.24.190/api/index.php/schedule/infoByArray/get?scheduleKeyStrArr=\(self.scheduleKeyStr)")
+		let baseURL = NSURL(string: "https://healthjjak.com/api/index.php/schedule/infoByArray/get?scheduleKeyStrArr=\(self.scheduleKeyStr)")
 		
 		do{
 			let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: .MutableContainers) as! NSDictionary
@@ -74,17 +102,6 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 		}
 	}
 	
-	func setViewStyle() {
-		self.payButton.layer.cornerRadius = 5.0
-		self.payButton.layer.masksToBounds = true
-		
-		self.payInfoSubView.layer.cornerRadius = 5.0
-		self.payInfoSubView.layer.masksToBounds = true
-		
-		self.payMethodSelectSubView.layer.cornerRadius = 5.0
-		self.payMethodSelectSubView.layer.masksToBounds = true
-	}
-	
 	func setLabelText() {
 		selectScheduleLengthLabel.text = "선택한 스케쥴 : \(scheduleKeyArr.count)개"
 		
@@ -92,6 +109,7 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 			self.totalPrice = self.totalPrice + (schedule["member"]!!["hm"]!!["agrmt"]!!["info"]!!["price"] as! Int)
 		}
 		
+		VATPriceLabel.text = "부가세 : \(self.VAT)원"
 		totalPriceLabel.text = "총 결제가격 : \(self.totalPrice + self.VAT)원"
 	}
 	
@@ -103,14 +121,14 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 		self.cardButton.backgroundColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
 		self.directBankButton.backgroundColor = UIColor(red: 29/255, green: 114/255, blue: 200/255, alpha: 1)
 		
-		self.payMethod = "bank"
+		self.payMethod = "trans"
 	}
 	
 	@IBAction func cardSelect(sender: AnyObject) {
 		self.directBankButton.backgroundColor = UIColor(red: 102/255, green: 102/255, blue: 102/255, alpha: 1)
 		self.cardButton.backgroundColor = UIColor(red: 29/255, green: 114/255, blue: 200/255, alpha: 1)
 		
-		self.payMethod = "wcard"
+		self.payMethod = "card"
 	}
 	
 	func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -120,10 +138,30 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 	func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
 		
-		cell.textLabel!.text = "\(self.info[indexPath.row]["schedule"]!!["s_date"] as! String)  \(self.info[indexPath.row]["schedule"]!!["s_time"] as! String)"
+		cell.textLabel!.text = {
+			let formatter1 = NSDateFormatter()
+			formatter1.dateFormat = "Y-MM-dd"
+			let sDateFromString = formatter1.dateFromString(self.info[indexPath.row]["schedule"]!!["s_date"] as! String)
+			let formatter2 = NSDateFormatter()
+			formatter2.dateFormat = "MM.dd E"
+			
+			let formatter3 = NSDateFormatter()
+			formatter3.dateFormat = "HH:m:s"
+			formatter3.timeStyle = .MediumStyle
+			let sTimeFromString = formatter3.dateFromString(self.info[indexPath.row]["schedule"]!!["s_time"] as! String)
+			let formatter4 = NSDateFormatter()
+			formatter4.dateFormat = "hh시"
+			return "\(formatter2.stringFromDate(sDateFromString!)) / \(formatter4.stringFromDate(sTimeFromString!))"
+		}()
+		
 		cell.detailTextLabel!.text = "\(self.info[indexPath.row]["member"]!!["hm"]!!["info"]!!["name"] as! String) / \(self.info[indexPath.row]["member"]!!["fitness"]!!["info"]!!["center_name"] as! String)"
 		
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.separatorInset = UIEdgeInsetsZero
+		cell.layoutMargins = UIEdgeInsetsZero
 	}
 
 	@IBAction func doPayAction(sender: AnyObject) {
@@ -133,7 +171,7 @@ class PayViewController: UIViewController, UITableViewDelegate, UITableViewDataS
 			self.presentViewController(alertView, animated: true, completion: nil)
 		}else{
 			//결제화면 진행
-			let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("INIPayWebView") as! INIPayWebViewViewController
+			let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("INIPayWebView") as! IamportViewController
 			
 			nextView.payMethod = self.payMethod
 			nextView.P_NOTI = scheduleKeyStr.stringByReplacingOccurrencesOfString("_", withString: ".")

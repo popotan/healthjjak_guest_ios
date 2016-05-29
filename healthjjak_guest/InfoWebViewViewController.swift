@@ -24,7 +24,6 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate, UIGestureR
 		super.viewDidLoad()
 		
 		// Do any additional setup after loading the view.
-		print(self.targetKey)
 		if getMemberInfo() {
 			if checkAgrmt() {
 				loadWebViewInit()
@@ -44,7 +43,7 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate, UIGestureR
 	}
 	
 	func loadWebViewInit(){
-		let homeURL = NSURL(string:"http://211.253.24.190/webview/#/info/\(self.division)/\(self.targetKey)")
+		let homeURL = NSURL(string:"https://healthjjak.com/webview/#/info/\(self.division)/\(self.targetKey)")
 		infoWebView.loadRequest(NSURLRequest(URL: homeURL!))
 	}
 	
@@ -67,7 +66,7 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate, UIGestureR
 		if UserSession.sharedInstance.valid {
 		
 		//건강상태 체크
-		let baseURL = NSURL(string: "http://211.253.24.190/api/index.php/document/medicalCheckUp/get")
+		let baseURL = NSURL(string: "https://healthjjak.com/api/index.php/document/medicalCheckUp/get")
 		
 		do{
 			let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: .MutableContainers) as! NSDictionary
@@ -164,7 +163,7 @@ class InfoWebViewViewController: UIViewController, UIWebViewDelegate, UIGestureR
 		
 		var JSONData:NSDictionary
 		
-		let baseURL = NSURL(string:"http://211.253.24.190/api/index.php/info/\(self.division)?targetKey=\(self.targetKey)")
+		let baseURL = NSURL(string:"https://healthjjak.com/api/index.php/info/\(self.division)?targetKey=\(self.targetKey)")
 		
 		do{
 			JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary

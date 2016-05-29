@@ -67,45 +67,49 @@ class UserSession {
 	var deviceToken:String = ""
 	
 	var valid: Bool = false {
-		willSet{
-			if newValue {
-				self.getUserSessionInfo()
-			}
-		}
+		willSet{}
 		didSet{
+			if valid {
+				getUserSessionInfo()
+			}
 		}
 	}
 	var info:NSDictionary = [:]
 	
 	static let sharedInstance = UserSession()
 	
-	func getValidInfo(){
-		let baseURL = NSURL(string:"http://211.253.24.190/api/index.php/log/checkUserSession")
+	func getValidInfo() -> Bool{
+		let baseURL = NSURL(string:"https://healthjjak.com/api/index.php/log/checkUserSession")
 		
 		do{
 		let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
 			
-			NSOperationQueue.mainQueue().addOperationWithBlock({
+			//NSOperationQueue.mainQueue().addOperationWithBlock({
+			if JSONData["valid"] as! Bool {
 					self.valid = JSONData["valid"] as! Bool
-			})
+			}
+			//})
+			
+			return self.valid
 		}catch{
 			self.valid = false
+			return self.valid
 		}
 	}
 	
 	func getUserSessionInfo() {
-		let baseURL = NSURL(string:"http://211.253.24.190/api/index.php/log/info/get")
+		let baseURL = NSURL(string:"https://healthjjak.com/api/index.php/log/info/get")
 		
 		do{
 		let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
 			
-			NSOperationQueue.mainQueue().addOperationWithBlock({
+			//NSOperationQueue.mainQueue().addOperationWithBlock({
 				if JSONData["state"] as! Int == 200 {
 					self.info = (JSONData["res"] as? NSDictionary)!
 				}else{
 					self.info = [:]
 				}
-			})
+			//})
 		}catch{
 			self.info = [:]
 		}

@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		userSession.getValidInfo()
 		
 		//실행시 뱃지 초기화
-		//UIApplication.sharedApplication().applicationIconBadgeNumber = 0
+		UIApplication.sharedApplication().applicationIconBadgeNumber = 0
 		
 	}
 

@@ -21,13 +21,20 @@ class MyScheduleTableCell : UITableViewCell{
 
 class MyScheduleListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
-	var schedule:NSArray = []
+	@IBOutlet weak var scheduleListTableView: UITableView!
+	var schedule:NSArray = [] {
+		willSet{}
+		didSet{
+			schedule = schedule.reverse()
+		}
+	}
 	var member:NSDictionary = [:]
 	
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+		getSchedules()
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,12 +42,12 @@ class MyScheduleListViewController: UIViewController, UITableViewDataSource, UIT
         // Dispose of any resources that can be recreated.
     }
 	
-	override func viewDidAppear(animated: Bool) {
-		getSchedules()
+	override func viewWillAppear(animated: Bool) {
+		//getSchedules()
 	}
 	
 	func getSchedules(){
-		let baseURL = NSURL(string: "http://211.253.24.190/api/index.php/schedule/guest/get?purpose=total")
+		let baseURL = NSURL(string: "https://healthjjak.com/api/index.php/schedule/guest/get?purpose=total")
 		
 		do{
 			let JSONData = try NSJSONSerialization.JSONObjectWithData(NSData(contentsOfURL: baseURL!)!, options: .MutableContainers) as! NSDictionary
@@ -55,6 +62,8 @@ class MyScheduleListViewController: UIViewController, UITableViewDataSource, UIT
 					subview!.navigationItem.title = "내 스케쥴"
 					subview!.navigationItem.hidesBackButton = true
 					self.navigationController?.pushViewController(subview!, animated: false)
+					
+					scheduleListTableView.reloadData()
 				}
 				
 			}else{
@@ -115,7 +124,7 @@ class MyScheduleListViewController: UIViewController, UITableViewDataSource, UIT
 		
 		cell.hmNameLabel.text = self.member["hm"]!["\(self.schedule[indexPath.row]["hm_key"] as! String)"]!!["info"]!!["name"] as? String
 		
-		cell.logoImgView.image = UIImage(data: NSData(contentsOfURL: NSURL(string:"http://211.253.24.190/userimgs/\(self.member["hm"]![self.schedule[indexPath.row]["hm_key"] as! String]!!["info"]!!["logo_img"] as! String)")!)!)
+		cell.logoImgView.image = UIImage(data: NSData(contentsOfURL: NSURL(string:"https://healthjjak.com/html/userimgs/\(self.member["hm"]![self.schedule[indexPath.row]["hm_key"] as! String]!!["info"]!!["logo_img"] as! String)")!)!)
 		cell.logoImgView.layer.masksToBounds = true
 		cell.logoImgView.layer.cornerRadius = cell.logoImgView.frame.width / 2
 		
@@ -123,6 +132,22 @@ class MyScheduleListViewController: UIViewController, UITableViewDataSource, UIT
 		cell.todayAlertLabel.layer.cornerRadius = 8.0
 		
 		return cell
+	}
+	
+	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+		let nextView = self.storyboard?.instantiateViewControllerWithIdentifier("scheduleInfo") as! ScheduleinfoViewController
+		
+		nextView.scheduleKey = self.schedule[indexPath.row]["schedule_key"] as! String
+		nextView.info = self.schedule[indexPath.row] as! NSDictionary
+		nextView.member["hm"] = self.member["hm"]!["\(self.schedule[indexPath.row]["hm_key"] as! String)"] as? NSDictionary
+		nextView.member["fitness"] = self.member["fitness"]!["\(self.schedule[indexPath.row]["fitness_key"] as! String)"] as? NSDictionary
+		
+		self.navigationController?.pushViewController(nextView, animated: true)
+	}
+	
+	func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+		tableView.separatorInset = UIEdgeInsetsZero
+		cell.layoutMargins = UIEdgeInsetsZero
 	}
 
     /*
